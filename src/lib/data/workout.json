@@ -1,0 +1,377 @@
+{
+  "meta": {
+    "athlete": "Alê",
+    "age": 56,
+    "context": "Academia residencial · 50+",
+    "principles": [
+      "Consistência",
+      "Recomposição gradual",
+      "Preservação articular",
+      "Cardio moderado",
+      "Mobilidade diária",
+      "Sono e nutrição"
+    ]
+  },
+  "weekdays": [
+    {
+      "id": "segunda",
+      "weekday": 1,
+      "label": "Segunda-feira",
+      "short": "Seg",
+      "focus": "Peito · Ombro · Tríceps",
+      "intention": "Empurrar.",
+      "intentionDetail": "Cadeia anterior superior, com volume controlado e progressão de carga.",
+      "estimatedMinutes": "70–80 min",
+      "blocks": [
+        {
+          "kind": "forca",
+          "label": "Força",
+          "duration": "60 min",
+          "exercises": [
+            { "name": "Supino reto · halteres", "sets": "4 × 10", "focus": "Cotovelos a 45°. Descida controlada em 2s. Escápulas retraídas e firmes no banco." },
+            { "name": "Supino inclinado · halteres", "sets": "3 × 10", "focus": "Banco a 30°. Foco no peito superior. Não estenda totalmente no topo." },
+            { "name": "Desenvolvimento de ombro · halteres", "sets": "3 × 10", "focus": "Cotovelos abaixo dos halteres. Não tranque os cotovelos no topo." },
+            { "name": "Elevação lateral · halteres", "sets": "3 × 12-15", "focus": "Cotovelos levemente flexionados. Sobe até linha do ombro, sem balanço." },
+            { "name": "Tríceps na polia · push-down", "sets": "3 × 12", "focus": "Cotovelos colados ao corpo. Contraia no fundo, controle na subida." },
+            { "name": "Tríceps overhead · halter", "sets": "2 × 12", "focus": "Cotovelos próximos da cabeça. Mantenha amplitude completa atrás." }
+          ]
+        },
+        {
+          "kind": "cardio",
+          "label": "Cardio",
+          "duration": "20 min",
+          "exercises": [
+            { "name": "Esteira inclinada leve", "sets": "20 min", "focus": "Zona 2. Inclinação 4-8%. Velocidade conversável." }
+          ]
+        },
+        {
+          "kind": "core",
+          "label": "Core",
+          "duration": "10 min",
+          "exercises": [
+            { "name": "Prancha frontal", "sets": "3 × 40s", "focus": "Corpo alinhado da cabeça aos calcanhares. Abdômen, glúteos e coxas contraídos." },
+            { "name": "Dead bug", "sets": "3 × 10", "focus": "Lombar apoiada no chão durante todo o movimento. Cadência lenta e controlada." },
+            { "name": "Crunch abdominal", "sets": "3 × 15", "focus": "Sem puxar o pescoço. Foco na contração do abdômen. Lombar apoiada no chão." }
+          ]
+        },
+        {
+          "kind": "alongamento",
+          "label": "Alongamento",
+          "duration": "10 min",
+          "exercises": [
+            { "name": "Peitoral", "sets": "2 × 30s cada lado", "focus": "Apoie o antebraço na parede. Gire o tronco para o lado oposto até sentir o alongamento." },
+            { "name": "Ombro", "sets": "2 × 30s", "focus": "Cruze um braço à frente do corpo, apoie com a outra mão na parte de trás do cotovelo." },
+            { "name": "Posterior", "sets": "2 × 30s cada lado", "focus": "Sentado, perna estendida à frente. Incline o tronco a partir do quadril, coluna reta." },
+            { "name": "Panturrilha", "sets": "2 × 30s cada lado", "focus": "Apoie as mãos na parede, perna estendida atrás, calcanhar no chão." }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "terca",
+      "weekday": 2,
+      "label": "Terça-feira",
+      "short": "Ter",
+      "focus": "Costas · Bíceps",
+      "intention": "Puxar.",
+      "intentionDetail": "Cadeia posterior superior, foco em volume e amplitude de movimento.",
+      "estimatedMinutes": "65–75 min",
+      "blocks": [
+        {
+          "kind": "forca",
+          "label": "Força",
+          "duration": "55 min",
+          "exercises": [
+            { "name": "Puxada frontal · polia alta", "sets": "4 × 10", "focus": "Puxe levando cotovelos para baixo e para trás. Escápulas retraídas." },
+            { "name": "Remada baixa · sentada", "sets": "4 × 10", "focus": "Tronco levemente inclinado. Cotovelos para trás, escápulas se aproximam." },
+            { "name": "Remada unilateral · halter", "sets": "3 × 10", "focus": "Coluna neutra. Puxe o halter em direção ao quadril, cotovelo para trás." },
+            { "name": "Face pull · polia", "sets": "3 × 15", "focus": "Carga leve. Foco em saúde de ombro, não força. Escápulas se aproximam." },
+            { "name": "Rosca direta · halteres", "sets": "3 × 12", "focus": "Supinação na subida. Cotovelos parados ao lado do corpo, sem balanço." },
+            { "name": "Rosca martelo · halteres", "sets": "3 × 12", "focus": "Pegada neutra durante todo o movimento. Foco no braquial." }
+          ]
+        },
+        {
+          "kind": "cardio",
+          "label": "Cardio",
+          "duration": "15-20 min",
+          "exercises": [
+            { "name": "Bike ou boxe leve", "sets": "15-20 min", "focus": "Zona 2. Cadência constante, postura ereta." }
+          ]
+        },
+        {
+          "kind": "core",
+          "label": "Core",
+          "duration": "10 min",
+          "exercises": [
+            { "name": "Prancha lateral", "sets": "3 × 30s cada lado", "focus": "Linha reta dos ombros aos joelhos. Quadril elevado, abdômen contraído." },
+            { "name": "Elevação de pernas deitado", "sets": "3 × 12", "focus": "Pernas estendidas. Movimento lento. Não encoste totalmente os pés no chão." },
+            { "name": "Russian twist", "sets": "3 × 20", "focus": "Tronco levemente inclinado para trás. Gire pelo abdômen, sem balançar braços." }
+          ]
+        },
+        {
+          "kind": "alongamento",
+          "label": "Alongamento",
+          "duration": "10 min",
+          "exercises": [
+            { "name": "Dorsal", "sets": "2 × 30s", "focus": "Eleve os braços acima da cabeça, entrelace os dedos. Alongue em direção ao teto." },
+            { "name": "Lombar", "sets": "2 × 30s", "focus": "Deitado, joelhos ao peito, abrace as pernas. Respire fundo e relaxe." },
+            { "name": "Quadril", "sets": "2 × 30s cada lado", "focus": "Joelho à frente, perna estendida atrás. Incline o tronco para frente sem forçar." }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "quarta",
+      "weekday": 3,
+      "label": "Quarta-feira",
+      "short": "Qua",
+      "focus": "Pernas · Core",
+      "intention": "Base.",
+      "intentionDetail": "Cadeia inferior com cargas moderadas. Priorize técnica e amplitude.",
+      "estimatedMinutes": "65–75 min",
+      "blocks": [
+        {
+          "kind": "forca",
+          "label": "Força",
+          "duration": "55 min",
+          "exercises": [
+            { "name": "Goblet squat", "sets": "4 × 12", "focus": "Halter junto ao peito. Joelhos no alinhamento dos pés. Profundidade até paralelo." },
+            { "name": "Afundo · halteres", "sets": "3 × 10", "focus": "Passo firme. Joelho da frente alinhado com tornozelo. Tronco ereto." },
+            { "name": "Step-up no banco · halteres", "sets": "3 × 10", "focus": "Apoie pé todo no banco. Empurre com calcanhar. Sem impulso da perna de trás." },
+            { "name": "Stiff · halteres", "sets": "4 × 10", "focus": "Quadril vai para trás. Coluna neutra. Sinta alongamento no posterior." },
+            { "name": "Panturrilha em pé · halteres", "sets": "4 × 20", "focus": "Amplitude completa. Pausa no topo. Controle a descida." }
+          ]
+        },
+        {
+          "kind": "cardio",
+          "label": "Cardio",
+          "duration": "15-20 min",
+          "exercises": [
+            { "name": "Caminhada leve", "sets": "15-20 min", "focus": "Ritmo conversável. Recuperação ativa, sem intensidade." }
+          ]
+        },
+        {
+          "kind": "core",
+          "label": "Core",
+          "duration": "10 min",
+          "exercises": [
+            { "name": "Prancha frontal", "sets": "3 × 40s", "focus": "Corpo alinhado da cabeça aos calcanhares. Abdômen, glúteos e coxas contraídos." },
+            { "name": "Dead bug", "sets": "3 × 10", "focus": "Lombar apoiada no chão. Cadência lenta e controlada." },
+            { "name": "Crunch abdominal", "sets": "3 × 15", "focus": "Sem puxar o pescoço. Foco na contração do abdômen." }
+          ]
+        },
+        {
+          "kind": "alongamento",
+          "label": "Alongamento",
+          "duration": "10 min",
+          "exercises": [
+            { "name": "Quadril", "sets": "2 × 30s cada lado", "focus": "Pombo: joelho à frente, perna estendida atrás. Incline o tronco para frente." },
+            { "name": "Posterior", "sets": "2 × 30s cada lado", "focus": "Sentado, perna estendida à frente. Incline o tronco a partir do quadril." },
+            { "name": "Glúteo", "sets": "2 × 30s cada lado", "focus": "Deitado, cruze o tornozelo sobre o joelho oposto, puxe a coxa em direção ao peito." },
+            { "name": "Panturrilha", "sets": "2 × 30s cada lado", "focus": "Apoie as mãos na parede, perna estendida atrás, calcanhar no chão." }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "quinta",
+      "weekday": 4,
+      "label": "Quinta-feira",
+      "short": "Qui",
+      "focus": "Funcional · Recuperação",
+      "intention": "Integrar.",
+      "intentionDetail": "Circuito de corpo inteiro em ritmo moderado. Foco em fluidez e respiração.",
+      "estimatedMinutes": "70 min",
+      "blocks": [
+        {
+          "kind": "forca",
+          "label": "Circuito · 4 voltas",
+          "duration": "40 min",
+          "exercises": [
+            { "name": "Flexão inclinada · banco", "sets": "Circuito · 12 reps", "focus": "Mãos apoiadas no banco. Corpo alinhado da cabeça aos calcanhares." },
+            { "name": "Remada TRX", "sets": "Circuito · 12 reps", "focus": "Corpo alinhado. Puxe levando cotovelos para trás, escápulas se aproximam." },
+            { "name": "Elevação lateral leve · halteres", "sets": "Circuito · 15 reps", "focus": "Carga leve. Foco em qualidade de movimento, não força." },
+            { "name": "Rosca alternada · halter", "sets": "Circuito · 10 cada", "focus": "Alterne os braços. Cotovelos parados, sem balanço de tronco." },
+            { "name": "Tríceps na corda", "sets": "Circuito · 12 reps", "focus": "Cotovelos próximos ao corpo. Separe as pontas da corda no fim do movimento." },
+            { "name": "Boxe leve · saco", "sets": "Circuito · 2 min", "focus": "Guarda elevada. Jab e cruzado leves. Gire o tronco e retorne à guarda." },
+            { "name": "Agachamento livre", "sets": "Circuito · 15 reps", "focus": "Pés na largura dos ombros. Joelhos no alinhamento dos pés. Profundidade controlada." }
+          ]
+        },
+        {
+          "kind": "cardio",
+          "label": "Cardio",
+          "duration": "20 min",
+          "exercises": [
+            { "name": "Elíptico ou bike", "sets": "20 min", "focus": "Zona 2. Movimento coordenado de braços e pernas. Core ativado." }
+          ]
+        },
+        {
+          "kind": "core",
+          "label": "Core",
+          "duration": "10 min",
+          "exercises": [
+            { "name": "Prancha lateral", "sets": "3 × 30s cada lado", "focus": "Linha reta dos ombros aos joelhos. Quadril elevado." },
+            { "name": "Elevação de pernas", "sets": "3 × 12", "focus": "Pernas estendidas. Movimento lento. Lombar no chão." },
+            { "name": "Russian twist", "sets": "3 × 20", "focus": "Tronco levemente inclinado para trás. Gire pelo abdômen." }
+          ]
+        },
+        {
+          "kind": "alongamento",
+          "label": "Alongamento · Mobilidade",
+          "duration": "10 min",
+          "exercises": [
+            { "name": "Mobilidade quadril", "sets": "Sessão completa", "focus": "Círculos amplos com a perna, em pé e no chão. Liberte a articulação do quadril." },
+            { "name": "Mobilidade ombro", "sets": "Sessão completa", "focus": "Círculos com braço estendido, frente e trás. Amplitude crescente." }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sexta",
+      "weekday": 5,
+      "label": "Sexta-feira",
+      "short": "Sex",
+      "focus": "Peito · Costas",
+      "intention": "Push & Pull.",
+      "intentionDetail": "Combinação simétrica de cadeia anterior e posterior superior.",
+      "estimatedMinutes": "70 min",
+      "blocks": [
+        {
+          "kind": "forca",
+          "label": "Força",
+          "duration": "60 min",
+          "exercises": [
+            { "name": "Supino reto · halteres", "sets": "4 × 8-10", "focus": "Carga ligeiramente maior que segunda. Cotovelos a 45°." },
+            { "name": "Remada baixa · sentada", "sets": "4 × 10", "focus": "Tronco levemente inclinado. Cotovelos para trás, escápulas se aproximam." },
+            { "name": "Supino inclinado · halteres", "sets": "3 × 10", "focus": "Banco a 30°. Foco no peito superior." },
+            { "name": "Puxada frontal · polia alta", "sets": "3 × 10", "focus": "Cotovelos para baixo e para trás. Escápulas retraídas." },
+            { "name": "Crucifixo · halteres", "sets": "3 × 12", "focus": "Cotovelos levemente flexionados. Arco controlado. Sinta o alongamento do peito." },
+            { "name": "Pullover · halter", "sets": "2 × 12", "focus": "Cotovelos levemente flexionados. Arco amplo, sem hiperextensão de ombro." }
+          ]
+        },
+        {
+          "kind": "cardio",
+          "label": "Cardio",
+          "duration": "15-20 min",
+          "exercises": [
+            { "name": "Elíptico", "sets": "15-20 min", "focus": "Zona 2. Movimento coordenado e ritmado." }
+          ]
+        },
+        {
+          "kind": "core",
+          "label": "Core",
+          "duration": "10 min",
+          "exercises": [
+            { "name": "Prancha frontal", "sets": "3 × 40s", "focus": "Corpo alinhado. Abdômen, glúteos e coxas contraídos." },
+            { "name": "Dead bug", "sets": "3 × 10", "focus": "Lombar apoiada no chão. Cadência lenta." },
+            { "name": "Crunch abdominal", "sets": "3 × 15", "focus": "Sem puxar o pescoço. Foco na contração." }
+          ]
+        },
+        {
+          "kind": "alongamento",
+          "label": "Alongamento",
+          "duration": "10 min",
+          "exercises": [
+            { "name": "Peitoral", "sets": "2 × 30s cada lado", "focus": "Antebraço na parede. Gire o tronco para o lado oposto." },
+            { "name": "Dorsal", "sets": "2 × 30s", "focus": "Braços acima da cabeça, dedos entrelaçados. Alongue para cima." },
+            { "name": "Ombros", "sets": "2 × 30s cada lado", "focus": "Cruze um braço à frente do corpo, apoie com a outra mão." }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sabado",
+      "weekday": 6,
+      "label": "Sábado",
+      "short": "Sáb",
+      "focus": "Pernas leves · Cardio longo",
+      "intention": "Resistência.",
+      "intentionDetail": "Volume leve nas pernas e sessão longa de aeróbico zona 2.",
+      "estimatedMinutes": "75–90 min",
+      "blocks": [
+        {
+          "kind": "forca",
+          "label": "Força",
+          "duration": "35 min",
+          "exercises": [
+            { "name": "Agachamento livre", "sets": "3 × 15", "focus": "Carga baixa, foco em volume. Profundidade controlada, joelhos alinhados." },
+            { "name": "Stiff leve · halteres", "sets": "3 × 15", "focus": "Carga leve. Quadril vai para trás. Sinta alongamento do posterior." },
+            { "name": "Afundo andando · halteres", "sets": "3 × 12 cada", "focus": "Passos firmes alternando pernas. Tronco ereto, joelho alinhado ao tornozelo." },
+            { "name": "Panturrilha em pé · halteres", "sets": "4 × 20", "focus": "Amplitude completa. Pausa no topo, controle na descida." }
+          ]
+        },
+        {
+          "kind": "cardio",
+          "label": "Cardio longo",
+          "duration": "30-45 min",
+          "exercises": [
+            { "name": "Esteira ou bike", "sets": "30-45 min", "focus": "Zona 2 · conversável. Ritmo constante, sem picos." }
+          ]
+        },
+        {
+          "kind": "core",
+          "label": "Core",
+          "duration": "10 min",
+          "exercises": [
+            { "name": "Prancha lateral", "sets": "3 × 30s cada lado", "focus": "Linha reta. Quadril elevado." },
+            { "name": "Elevação de pernas", "sets": "3 × 12", "focus": "Pernas estendidas. Lombar no chão." },
+            { "name": "Russian twist", "sets": "3 × 20", "focus": "Gire pelo abdômen, tronco inclinado para trás." }
+          ]
+        },
+        {
+          "kind": "alongamento",
+          "label": "Alongamento",
+          "duration": "10 min",
+          "exercises": [
+            { "name": "Sessão completa", "sets": "10 min", "focus": "Alongamento global: peitoral, dorsal, posterior, quadril, panturrilha. 30s cada." }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "domingo",
+      "weekday": 0,
+      "label": "Domingo",
+      "short": "Dom",
+      "focus": "Recuperação",
+      "intention": "Descansar.",
+      "intentionDetail": "O descanso não é ausência de treino — é a parte em que o corpo se reconstrói.",
+      "estimatedMinutes": "Livre",
+      "blocks": [
+        {
+          "kind": "recuperacao",
+          "label": "Pilares da recuperação",
+          "duration": "Dia inteiro",
+          "exercises": [
+            { "name": "Descanso completo", "sets": "—", "focus": "Treino estruturado = zero. Permita o corpo absorver a semana." },
+            { "name": "Caminhada leve (opcional)", "sets": "30-45 min", "focus": "Ao ar livre, ritmo conversável. Sem intenção de queima." },
+            { "name": "Mobilidade", "sets": "10-15 min", "focus": "Alongamento global e mobilidade articular." },
+            { "name": "Hidratação", "sets": "2,5-3 L", "focus": "Reforçar a hidratação ao longo do dia." },
+            { "name": "Sono", "sets": "7-8h", "focus": "Dormir 7-8h. É aqui que a hipertrofia acontece." }
+          ]
+        }
+      ]
+    }
+  ],
+  "method": {
+    "title": "Progressão de cargas",
+    "subtitle": "A progressão é o motor da hipertrofia. Mas progressão sem técnica é só atrito articular acumulado.",
+    "rules": [
+      "Aumente carga só quando completar todas as séries com a técnica intacta. Se na última repetição da última série ainda houver controle, está pronto para subir.",
+      "Suba em incrementos pequenos. 1 a 2,5 kg por exercício. Progressão lenta é progressão sustentável.",
+      "Técnica acima de carga, sempre. Uma repetição limpa vale por três sujas. Ego lifting não é treino, é risco.",
+      "Aceite platôs. Períodos de manutenção fazem parte. Eles consolidam o que foi conquistado."
+    ]
+  },
+  "nutrition": {
+    "title": "Nutrição e descanso",
+    "subtitle": "Treinar é o estímulo. O resultado vem do que acontece nas 22 horas restantes do dia.",
+    "pillars": [
+      { "metric": "1,6 g/kg", "label": "Proteína", "note": "Cerca de 145g por dia. Distribuir em 4 refeições." },
+      { "metric": "3 L", "label": "Hidratação", "note": "Água ao longo do dia. Mais em dias de cardio longo." },
+      { "metric": "−300 kcal", "label": "Déficit moderado", "note": "Recomposição lenta. Sem déficits agressivos." },
+      { "metric": "7-8h", "label": "Sono", "note": "Janela onde a hipertrofia e a recuperação acontecem." },
+      { "metric": "≤ 2x semana", "label": "Álcool", "note": "Reduzir frequência. Compromete recuperação e sono." }
+    ]
+  }
+}

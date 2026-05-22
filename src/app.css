@@ -1,0 +1,40 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    overscroll-behavior-y: none;
+  }
+  body {
+    font-feature-settings: 'ss01', 'cv11';
+    padding-top: env(safe-area-inset-top);
+    padding-bottom: env(safe-area-inset-bottom);
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
+    min-height: 100dvh;
+  }
+}
+
+@layer components {
+  .display {
+    @apply font-serif tracking-tightest;
+  }
+  .label {
+    @apply font-sans uppercase tracking-[0.18em] text-[11px] text-ink-300;
+  }
+  .num {
+    font-variant-numeric: tabular-nums;
+  }
+  .tap {
+    @apply active:scale-[0.98] transition-transform select-none touch-manipulation;
+  }
+  .card {
+    @apply rounded-2xl bg-ink-900 border border-ink-800 p-5;
+  }
+  .pill {
+    @apply inline-flex items-center gap-1 rounded-full border border-ink-700 px-3 py-1 text-xs uppercase tracking-wider text-ink-300;
+  }
+}
