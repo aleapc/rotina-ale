@@ -2,6 +2,23 @@
 
 PWA pessoal para consulta rápida do guia de treino no iPhone, durante a academia.
 
+**Live:** https://aleapc.github.io/rotina-ale/
+
+## Instalar no iPhone
+
+1. Abra https://aleapc.github.io/rotina-ale/ no **Safari** (não funciona no Chrome iOS para PWA)
+2. Toque no botão de compartilhar (quadrado com seta para cima)
+3. Role e escolha **"Adicionar à Tela de Início"**
+4. Confirme — vira ícone fullscreen, sem barra do browser, offline-first
+
+## Deploy de updates
+
+```powershell
+.\deploy.ps1
+```
+
+Faz build com `BASE_PATH=/rotina-ale`, push direto para o branch `gh-pages`. Em ~1 min está no ar.
+
 ## O que é
 
 Versão interativa do PDF "Treino Ale 21052026.pdf" — 7 dias de treino com força, cardio, core e alongamento, layout editorial preservado, mas agora com:
@@ -14,7 +31,7 @@ Versão interativa do PDF "Treino Ale 21052026.pdf" — 7 dias de treino com for
 - **Offline-first** (PWA) — funciona sem sinal no subsolo da academia
 - **Modo escuro nativo** com tipografia Fraunces (display) + Inter (corpo)
 
-## Como rodar localmente
+## Rodar localmente
 
 ```bash
 npm install
@@ -22,21 +39,6 @@ npm run dev
 ```
 
 Abre em `http://localhost:5173`.
-
-## Como instalar no iPhone
-
-1. Faça `npm run build` — gera a pasta `build/` estática
-2. Hospede em um host HTTPS qualquer (sugestões: Cloudflare Pages, GitHub Pages, Vercel — todos free tier)
-3. No iPhone, abra a URL no **Safari**
-4. Toque no botão de compartilhar (quadrado com seta para cima)
-5. Role e escolha **"Adicionar à Tela de Início"**
-6. Confirme — vira um ícone fullscreen, sem barra de browser
-
-### Para teste no Wi-Fi local (sem deploy)
-
-`npm run dev -- --host` já está habilitado. Abra `http://<ip-do-seu-computador>:5173` no Safari do iPhone na mesma rede.
-
-> ⚠️ iOS exige HTTPS para o service worker funcionar 100%. No modo local HTTP você consegue ver a UI, mas o "Adicionar à Tela de Início" e o offline-first só funcionam direito em HTTPS (produção).
 
 ## Estrutura
 
