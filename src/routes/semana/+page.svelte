@@ -14,16 +14,23 @@
   <span></span>
 </header>
 
-<h1 class="display text-3xl mb-6">A semana</h1>
+<div class="mb-8">
+  <div class="label accent">03 · VISÃO GERAL</div>
+  <h1 class="display text-3xl mt-1">Estrutura semanal</h1>
+  <div class="accent-bar mt-3"></div>
+  <p class="mt-4 text-sm text-ink-300 italic">
+    Sete dias, sete intenções. Volume controlado, recuperação ativa e foco em consistência.
+  </p>
+</div>
 
 <ul class="space-y-2">
   {#each ordered as day}
     <li>
       <a href="{base}/dia/{day.id}/" class="tap card flex items-center justify-between">
         <div>
-          <div class="label">{day.short}</div>
+          <div class="label accent">{day.short}</div>
           <div class="text-base mt-1">{day.focus}</div>
-          <div class="text-xs text-ink-500 mt-0.5">{day.intention}</div>
+          <div class="text-xs text-accent mt-0.5 italic">{day.intention}</div>
         </div>
         <div class="text-xs text-ink-500 num whitespace-nowrap">{day.estimatedMinutes}</div>
       </a>

@@ -20,10 +20,13 @@
 
 @layer components {
   .display {
-    @apply font-serif tracking-tightest;
+    @apply font-display font-bold tracking-tightest;
   }
   .label {
-    @apply font-sans uppercase tracking-[0.18em] text-[11px] text-ink-300;
+    @apply font-sans uppercase tracking-[0.18em] text-[11px] font-semibold text-ink-300;
+  }
+  .label.accent {
+    @apply text-accent;
   }
   .num {
     font-variant-numeric: tabular-nums;
@@ -35,6 +38,15 @@
     @apply rounded-2xl bg-ink-900 border border-ink-800 p-5;
   }
   .pill {
-    @apply inline-flex items-center gap-1 rounded-full border border-ink-700 px-3 py-1 text-xs uppercase tracking-wider text-ink-300;
+    @apply inline-flex items-center gap-1 rounded-full border border-ink-700 px-3 py-1.5 text-xs uppercase tracking-wider text-ink-300 hover:border-accent hover:text-accent transition-colors;
+  }
+  .accent-bar {
+    @apply block h-[3px] w-12 bg-accent rounded-full;
+  }
+  .accent-bar-thin {
+    @apply block h-[2px] w-8 bg-accent rounded-full;
+  }
+  .diagram {
+    @apply rounded-xl overflow-hidden bg-cream;
   }
 }

@@ -4,6 +4,7 @@ export interface Exercise {
   name: string;
   sets: string;
   focus: string;
+  diagram?: string;
 }
 
 export interface Block {

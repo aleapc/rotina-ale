@@ -1,30 +1,41 @@
 <script lang="ts">
   import { base } from '$app/paths';
-  import { onMount, onDestroy } from 'svelte';
+  import { onDestroy } from 'svelte';
   import { exerciseKey, parseSets } from '$lib/workout';
   import { loadSession, updateSet, lastLoad, currentSession } from '$lib/store';
   import type { SetLog } from '$lib/types';
 
   let { data } = $props();
-  const { day, block, exerciseIndex } = data;
-  const ex = block.exercises[exerciseIndex];
-  const key = exerciseKey(day.id, block.kind, ex.name);
-  const totalSets = parseSets(ex.sets);
+  const day = $derived(data.day);
+  const block = $derived(data.block);
+  const ex = $derived(block.exercises[data.exerciseIndex]);
+  const exerciseIndex = $derived(data.exerciseIndex);
+  const key = $derived(exerciseKey(day.id, block.kind, ex.name));
+  const totalSets = $derived(parseSets(ex.sets));
 
-  let sets = $state<SetLog[]>(Array.from({ length: totalSets }, () => ({ done: false })));
+  let sets = $state<SetLog[]>([]);
   let suggestedLoad = $state<number | null>(null);
   let focusOpen = $state(false);
 
   let restRemaining = $state(0);
   let restInterval: ReturnType<typeof setInterval> | null = null;
 
-  onMount(async () => {
-    const session = await loadSession(day.id);
-    const log = session.exercises[key];
-    if (log && log.sets.length >= totalSets) {
-      sets = log.sets.slice(0, totalSets);
-    }
-    suggestedLoad = await lastLoad(key);
+  $effect(() => {
+    const currentKey = key;
+    const currentTotal = totalSets;
+    let cancelled = false;
+    (async () => {
+      const session = await loadSession(day.id);
+      if (cancelled) return;
+      const log = session.exercises[currentKey];
+      sets = log && log.sets.length >= currentTotal
+        ? log.sets.slice(0, currentTotal)
+        : Array.from({ length: currentTotal }, () => ({ done: false }));
+      suggestedLoad = await lastLoad(currentKey);
+    })();
+    return () => {
+      cancelled = true;
+    };
   });
 
   currentSession.subscribe((s) => {
@@ -78,39 +89,58 @@
     if (restInterval) clearInterval(restInterval);
   });
 
-  const prevIdx = exerciseIndex > 0 ? exerciseIndex - 1 : null;
-  const nextIdx = exerciseIndex < block.exercises.length - 1 ? exerciseIndex + 1 : null;
+  const prevIdx = $derived(exerciseIndex > 0 ? exerciseIndex - 1 : null);
+  const nextIdx = $derived(
+    exerciseIndex < block.exercises.length - 1 ? exerciseIndex + 1 : null
+  );
+
   function exHref(i: number) {
     const name = block.exercises[i].name;
     return `${base}/dia/${day.id}/${block.kind}/${encodeURIComponent(`${block.kind}::${name}`)}/`;
   }
-
-  const blockTotal = block.exercises.length;
 </script>
 
 <header class="mb-6 flex items-center justify-between">
   <a href="{base}/dia/{day.id}/" class="tap pill">‹ {day.short}</a>
   <div class="text-xs text-ink-500 num">
-    EX {exerciseIndex + 1} / {blockTotal}
+    EX {exerciseIndex + 1} / {block.exercises.length}
   </div>
   <div class="flex gap-1">
     {#each block.exercises as _, i}
-      <span class="w-1.5 h-1.5 rounded-full {i <= exerciseIndex ? 'bg-cream' : 'bg-ink-700'}"></span>
+      <span
+        class="w-1.5 h-1.5 rounded-full {i < exerciseIndex
+          ? 'bg-accent/60'
+          : i === exerciseIndex
+            ? 'bg-accent'
+            : 'bg-ink-700'}"
+      ></span>
     {/each}
   </div>
 </header>
 
-<div class="mb-6">
-  <div class="label">{block.label}</div>
+<div class="mb-5">
+  <div class="label accent">{block.label}</div>
   <h1 class="display text-3xl mt-1 leading-[1.05]">{ex.name}</h1>
+  <div class="accent-bar-thin mt-3"></div>
 </div>
 
+{#if ex.diagram}
+  <div class="diagram mb-6 border border-ink-800">
+    <img
+      src="{base}/diagrams/{ex.diagram}"
+      alt="Como fazer {ex.name}"
+      class="w-full h-auto block"
+      loading="eager"
+    />
+  </div>
+{/if}
+
 <div class="card mb-6">
-  <div class="label mb-1">Séries × Reps</div>
+  <div class="label accent mb-1">Séries × Reps</div>
   <div class="display text-4xl num">{ex.sets}</div>
   {#if suggestedLoad !== null}
     <div class="text-xs text-ink-500 mt-3">
-      Última carga: <span class="text-ink-300 num">{suggestedLoad} kg</span>
+      Última carga: <span class="text-accent num font-medium">{suggestedLoad} kg</span>
     </div>
   {/if}
 </div>
@@ -121,8 +151,8 @@
     {#each sets as s, i}
       <li class="flex items-center gap-3 card !p-3">
         <button
-          class="tap w-10 h-10 rounded-full border flex items-center justify-center text-lg
-            {s.done ? 'bg-cream text-ink-950 border-cream' : 'border-ink-700 text-ink-500'}"
+          class="tap w-10 h-10 rounded-full border flex items-center justify-center text-lg font-medium num
+            {s.done ? 'bg-accent text-cream border-accent' : 'border-ink-700 text-ink-500'}"
           onclick={() => toggleSet(i)}
           aria-label="Marcar série {i + 1}"
         >
@@ -134,7 +164,7 @@
             type="text"
             inputmode="decimal"
             placeholder="kg"
-            class="w-16 bg-ink-800 rounded-lg px-2 py-1.5 text-right text-ink-100 num text-sm border border-ink-700 focus:border-cream focus:outline-none"
+            class="w-16 bg-ink-800 rounded-lg px-2 py-1.5 text-right text-ink-100 num text-sm border border-ink-700 focus:border-accent focus:outline-none"
             value={s.load ?? ''}
             onchange={(e) => setLoad(i, (e.target as HTMLInputElement).value)}
           />
@@ -146,10 +176,10 @@
 </section>
 
 {#if restRemaining > 0}
-  <div class="card mb-6 flex items-center gap-4">
-    <div class="text-3xl num display">{fmt(restRemaining)}</div>
+  <div class="card mb-6 flex items-center gap-4 border-accent/30">
+    <div class="text-3xl num display text-accent">{fmt(restRemaining)}</div>
     <div class="flex-1">
-      <div class="label">Descanso</div>
+      <div class="label accent">Descanso</div>
       <div class="text-xs text-ink-500 mt-1">Respira. Próxima série quando zerar.</div>
     </div>
     <button class="tap pill" onclick={stopRest}>Parar</button>
@@ -158,13 +188,10 @@
   <button class="tap pill mb-6" onclick={() => startRest(90)}>⏱ Descansar 90s</button>
 {/if}
 
-<button
-  class="tap w-full card text-left mb-6"
-  onclick={() => (focusOpen = !focusOpen)}
->
+<button class="tap w-full card text-left mb-6" onclick={() => (focusOpen = !focusOpen)}>
   <div class="flex items-center justify-between">
-    <span class="label">Foco postural</span>
-    <span class="text-ink-500 text-lg">{focusOpen ? '−' : '+'}</span>
+    <span class="label accent">Foco postural</span>
+    <span class="text-accent text-lg">{focusOpen ? '−' : '+'}</span>
   </div>
   {#if focusOpen}
     <p class="mt-3 text-ink-100 leading-relaxed">{ex.focus}</p>

@@ -10,13 +10,17 @@
   <span></span>
 </header>
 
-<h1 class="display text-3xl mb-2">{method.title}</h1>
-<p class="text-ink-300 text-sm mb-6">{method.subtitle}</p>
+<div class="mb-8">
+  <div class="label accent">11 · MÉTODO</div>
+  <h1 class="display text-3xl mt-1">{method.title}</h1>
+  <div class="accent-bar mt-3"></div>
+  <p class="text-ink-300 text-sm mt-4 italic">{method.subtitle}</p>
+</div>
 
 <ol class="space-y-3">
   {#each method.rules as rule, i}
     <li class="card">
-      <div class="label num">{String(i + 1).padStart(2, '0')}</div>
+      <div class="label accent num">{String(i + 1).padStart(2, '0')}</div>
       <p class="mt-2 leading-relaxed">{rule}</p>
     </li>
   {/each}
