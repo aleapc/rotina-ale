@@ -1,1 +1,1 @@
-export const env={}
+export const env={"PUBLIC_SUPABASE_URL":"https://cdxtdpvbuoofbpwcozca.supabase.co","PUBLIC_SUPABASE_ANON_KEY":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNkeHRkcHZidW9vZmJwd2NvemNhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzk4Mjk4MjYsImV4cCI6MjA5NTQwNTgyNn0.5iS334mrbItckJ7Nu-W4dyE94zkTDbYDEwHK_T1UH5Q"}
