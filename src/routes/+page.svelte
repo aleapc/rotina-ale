@@ -63,8 +63,11 @@
   <div class="display text-2xl mt-1 num">{day.estimatedMinutes}</div>
 </div>
 
-<nav class="flex justify-between items-center text-sm">
+<nav class="flex justify-between items-center text-sm mb-4">
   <a href="{base}/semana/" class="tap pill">Semana</a>
   <a href="{base}/metodo/" class="tap pill">Método</a>
   <a href="{base}/nutricao/" class="tap pill">Nutrição</a>
+</nav>
+<nav class="flex justify-center text-sm">
+  <a href="{base}/parear/" class="tap pill">⌐ Parear G2</a>
 </nav>

@@ -1,56 +1,63 @@
 # Builds the PWA and pushes to gh-pages branch.
 # Use: .\deploy.ps1
 #
-# Strategy: build into ./build, stash to TEMP, switch to gh-pages,
-# wipe tracked files (keeping node_modules untracked), copy build/ in,
-# add ONLY the build artifacts (not node_modules), commit, push.
+# Uses a dedicated git worktree at ../.rotina-gh-pages so we never
+# switch branches in the main checkout — eliminates checkout-conflict
+# bugs that previously caused gh-pages content to be committed to main.
 
 $ErrorActionPreference = "Stop"
 Set-Location $PSScriptRoot
+
+$worktreePath = (Resolve-Path "..").Path + "\.rotina-gh-pages"
+$buildPath = Join-Path $PSScriptRoot "build"
 
 Write-Host "→ Build com BASE_PATH=/rotina-ale ..." -ForegroundColor Cyan
 $env:BASE_PATH = "/rotina-ale"
 npm run build
 if (-not (Test-Path "build\.nojekyll")) { New-Item -ItemType File "build\.nojekyll" | Out-Null }
 
-Write-Host "→ Switching to gh-pages branch ..." -ForegroundColor Cyan
-$current = (git rev-parse --abbrev-ref HEAD).Trim()
-$tempDir = Join-Path $env:TEMP "rotina-ale-build-$(Get-Random)"
-Move-Item "build" $tempDir
+Write-Host "→ Preparing gh-pages worktree at $worktreePath ..." -ForegroundColor Cyan
 
-git checkout gh-pages
+# Make sure we have the latest gh-pages from origin
+git fetch origin gh-pages 2>&1 | Out-Null
 
-# Remove all tracked files from the index (without touching working tree files
-# like node_modules / .svelte-kit), then delete only the previously tracked
-# files from disk. node_modules stays put and is ignored from git.
-git rm -r --cached . | Out-Null
-git ls-files | ForEach-Object { if (Test-Path $_) { Remove-Item $_ -Force -ErrorAction SilentlyContinue } }
+# Remove any leftover worktree from a prior failed run
+if (Test-Path $worktreePath) {
+    git worktree remove --force $worktreePath 2>&1 | Out-Null
+    if (Test-Path $worktreePath) { Remove-Item $worktreePath -Recurse -Force }
+}
 
-Copy-Item -Path "$tempDir\*" -Destination "." -Recurse -Force
-Copy-Item -Path "$tempDir\.nojekyll" -Destination ".nojekyll" -Force
-Remove-Item $tempDir -Recurse -Force
+# Create a fresh worktree pointing at gh-pages
+git worktree add -B gh-pages $worktreePath origin/gh-pages
 
-# Write a .gitignore on gh-pages to keep node_modules and source out of the branch
+# Wipe everything except .git in the worktree
+Get-ChildItem $worktreePath -Force | Where-Object { $_.Name -ne '.git' } | Remove-Item -Recurse -Force
+
+# Copy build output
+Copy-Item -Path "$buildPath\*" -Destination $worktreePath -Recurse -Force
+Copy-Item -Path "$buildPath\.nojekyll" -Destination (Join-Path $worktreePath ".nojekyll") -Force
+
+# Write a minimal .gitignore for the gh-pages branch (kept on that branch only)
 @"
 node_modules
 .svelte-kit
-src
-.claude
-.github
-.tmp-pdf
-*.config.*
-package*.json
-tsconfig.json
-README.md
-deploy.ps1
-.gitignore
-"@ | Set-Content ".gitignore"
+*.log
+"@ | Set-Content (Join-Path $worktreePath ".gitignore")
 
-git add .nojekyll .gitignore 404.html index.html manifest.webmanifest favicon.svg apple-touch-icon.png icon-192.png icon-512.png icon-512-maskable.png registerSW.js sw.js workbox-*.js _app diagrams dia metodo nutricao semana 2>$null
+# Commit and push from inside the worktree
+Push-Location $worktreePath
+try {
+    git add -A
+    $date = Get-Date -Format "yyyy-MM-dd HH:mm"
+    git commit -m "deploy: $date" --allow-empty
+    git push origin gh-pages
+}
+finally {
+    Pop-Location
+}
 
-$date = Get-Date -Format "yyyy-MM-dd HH:mm"
-git commit -m "deploy: $date" --allow-empty
-git push origin gh-pages
+# Clean up
+git worktree remove --force $worktreePath
+if (Test-Path $worktreePath) { Remove-Item $worktreePath -Recurse -Force -ErrorAction SilentlyContinue }
 
-git checkout $current
 Write-Host "✓ Deployed. https://aleapc.github.io/rotina-ale/" -ForegroundColor Green
