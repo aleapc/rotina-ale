@@ -66,6 +66,10 @@
     {:else}
       Entre com seu email pra sincronizar treinos entre iPhone, óculos e qualquer outro
       dispositivo. Um código chega no seu Gmail — sem senha.
+      <br /><br />
+      <span class="text-ink-500 text-xs">
+        ⓘ Login só precisa ser feito uma vez aqui. Depois fica salvo nesse aparelho até você sair manualmente.
+      </span>
     {/if}
   </p>
 </div>

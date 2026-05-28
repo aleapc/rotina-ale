@@ -2,6 +2,9 @@
   import { goto } from '$app/navigation';
   import { base } from '$app/paths';
   import { dayByWeekday } from '$lib/workout';
+  import { authUser, signOut } from '$lib/store';
+
+  const APP_VERSION = 'v0.4-otp';
 
   const now = new Date();
   const day = dayByWeekday(now.getDay());
@@ -23,6 +26,12 @@
         recuperacao: '·'
       } as Record<string, string>
     )[kind] ?? '·';
+  }
+
+  async function handleSignOut() {
+    if (!confirm('Sair da conta neste dispositivo?\n\nVocê vai precisar fazer login de novo aqui (não afeta outros dispositivos).')) return;
+    await signOut();
+    goto(`${base}/login/`);
   }
 </script>
 
@@ -68,6 +77,15 @@
   <a href="{base}/metodo/" class="tap pill">Método</a>
   <a href="{base}/nutricao/" class="tap pill">Nutrição</a>
 </nav>
-<nav class="flex justify-center text-sm">
+<nav class="flex justify-center text-sm mb-8">
   <a href="{base}/parear/" class="tap pill">⌐ Parear G2</a>
 </nav>
+
+<footer class="mt-12 pt-6 border-t border-ink-800 flex items-center justify-between text-[10px] text-ink-500">
+  <span>Rotina Alê · {APP_VERSION}</span>
+  {#if $authUser}
+    <button onclick={handleSignOut} class="tap underline hover:text-accent">
+      Sair ({$authUser.email})
+    </button>
+  {/if}
+</footer>
