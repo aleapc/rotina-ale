@@ -51,7 +51,18 @@ export async function initAuth(): Promise<User | null> {
 export async function signInWithMagicLink(email: string, redirectTo?: string) {
   return supabase.auth.signInWithOtp({
     email,
-    options: { emailRedirectTo: redirectTo }
+    options: {
+      emailRedirectTo: redirectTo,
+      shouldCreateUser: true
+    }
+  });
+}
+
+export async function verifyOtp(email: string, token: string) {
+  return supabase.auth.verifyOtp({
+    email,
+    token,
+    type: 'email'
   });
 }
 
