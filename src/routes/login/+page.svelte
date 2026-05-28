@@ -30,7 +30,7 @@
   async function submitCode(e: Event) {
     e.preventDefault();
     const clean = code.replace(/\D/g, '');
-    if (clean.length !== 6 || busy) return;
+    if (clean.length < 6 || busy) return;
     busy = true;
     errorMsg = '';
     try {
@@ -51,7 +51,7 @@
   }
 
   function onCodeInput(e: Event) {
-    code = (e.target as HTMLInputElement).value.replace(/\D/g, '').slice(0, 6);
+    code = (e.target as HTMLInputElement).value.replace(/\D/g, '').slice(0, 10);
   }
 </script>
 
@@ -61,8 +61,8 @@
   <div class="accent-bar mt-4"></div>
   <p class="mt-4 text-ink-300 text-sm leading-relaxed">
     {#if step === 'code'}
-      Acabamos de enviar um código de 6 dígitos para <span class="text-cream font-medium">{email}</span>.
-      Confere o Gmail e digita aqui.
+      Acabamos de enviar um código para <span class="text-cream font-medium">{email}</span>.
+      Confere o Gmail e digita os dígitos aqui.
     {:else}
       Entre com seu email pra sincronizar treinos entre iPhone, óculos e qualquer outro
       dispositivo. Um código chega no seu Gmail — sem senha.
@@ -102,15 +102,15 @@
 {:else}
   <form onsubmit={submitCode} class="space-y-4">
     <div>
-      <label class="label" for="otp">Código de 6 dígitos</label>
+      <label class="label" for="otp">Código do email</label>
       <input
         id="otp"
         type="text"
         autocomplete="one-time-code"
         inputmode="numeric"
-        maxlength="6"
-        placeholder="000000"
-        class="mt-2 w-full bg-ink-900 border border-ink-700 rounded-xl px-4 py-4 text-3xl text-center text-ink-100 num tracking-[0.4em] focus:border-accent focus:outline-none"
+        maxlength="10"
+        placeholder="••••••"
+        class="mt-2 w-full bg-ink-900 border border-ink-700 rounded-xl px-4 py-4 text-3xl text-center text-ink-100 num tracking-[0.3em] focus:border-accent focus:outline-none"
         value={code}
         oninput={onCodeInput}
         disabled={busy}
@@ -120,7 +120,7 @@
 
     <button
       type="submit"
-      disabled={busy || code.length !== 6}
+      disabled={busy || code.length < 6}
       class="tap w-full rounded-2xl bg-accent hover:bg-accent-400 disabled:opacity-50 text-cream font-semibold py-4 text-lg shadow-lg shadow-accent/20"
     >
       {busy ? 'Verificando...' : 'Entrar'}
