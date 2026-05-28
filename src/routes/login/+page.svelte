@@ -62,7 +62,7 @@
   <p class="mt-4 text-ink-300 text-sm leading-relaxed">
     {#if step === 'code'}
       Acabamos de enviar um código para <span class="text-cream font-medium">{email}</span>.
-      Confere o Gmail e digita os dígitos aqui.
+      Confere o Gmail e digita os dígitos aqui — <span class="text-accent font-medium">não clique em nenhum link do email</span>, só copie o número.
     {:else}
       Entre com seu email pra sincronizar treinos entre iPhone, óculos e qualquer outro
       dispositivo. Um código chega no seu Gmail — sem senha.
